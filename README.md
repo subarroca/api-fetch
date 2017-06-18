@@ -9,8 +9,17 @@
 * Performance
 * Testable
 
+## To run
+
+```
+npm i
+webpack
+```
+
+
 ## Improvements
 
-* Use babel to move es6/7 code to es5
+* ~~Use babel to move es6/7 code to es5~~
 * Add a minifier to compact the code
 * Add sass so stylesheets support variables in all browsers
+* Move index outside of dist and copy via npm
