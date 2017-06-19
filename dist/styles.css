@@ -1,0 +1,63 @@
+html,
+body,
+div{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: sans-serif;
+}
+
+header,
+.content,
+.method,
+.url{
+  padding: 16px;
+}
+
+.request,
+.response{
+  background: #eee;
+}
+
+header{
+  background: tomato;
+  color: white;
+  font-weight: bold;
+}
+
+h1{
+  padding: 0 16px;
+}
+
+
+.content{
+  max-width: 1024px;
+  margin: auto;
+}
+
+.request{
+  display: flex;
+  align-items: center;
+}
+
+.url{
+  flex: 1;
+}
+
+.method{
+  font-size: .85em;
+  font-weight: bold;
+  color: #999;
+}
+
+.format{
+  margin: 16px;
+}
+
+.response{
+  margin-top: 16px;
+  display: block;
+  padding: 16px 0;
+}

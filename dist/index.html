@@ -1,11 +1,64 @@
 <html>
 
 <head>
-  <title>API Fetch</title>
+  <title>Request framework</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <script src="./bundle.js"></script>
+
+  <header>
+    Request framework
+  </header>
+
+  <section
+    class = content>
+
+    <h1>Advertiser list</h1>
+
+    <div
+      class = request>
+      <div
+        class = method>
+        GET
+      </div>
+      <div
+        class = url>
+        http://google.cat
+      </div>
+      
+      <select
+        name = format
+        class = format>
+        <option value = json>JSON</option>
+        <option value = xml>XML</option>
+      </select>
+    </div>
+
+    <pre
+      class = "response response--detail">
+      HTTP 200 OK
+      Vary:
+      Allow:
+      Content-type
+    </pre>
+
+    <pre
+      class = "response response--content">
+      <code>
+        [
+          {
+              "id": 1,
+              "name": "MockAdvertiser",
+              "external_id": "1",
+              "impressions": 52721284,
+              "clicks": 93149
+          }
+        ]
+      </code>
+    </pre>
+  </section>
 </body>
 
 </html>
