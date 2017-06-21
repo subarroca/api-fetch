@@ -1,4 +1,4 @@
-var path = require('path');
+let path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -6,7 +6,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'source-map', 
+  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -17,5 +17,14 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    contentBase: [
+      path.join(__dirname, 'dist'),
+      path.join(__dirname, 'data'),
+      path.join(__dirname, 'node_modules')
+    ],
+    compress: true,
+    port: 9000
   }
 };

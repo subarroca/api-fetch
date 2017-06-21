@@ -17,7 +17,7 @@ header,
 }
 
 .request,
-.response{
+.response--detail{
   background: #eee;
 }
 
@@ -57,7 +57,5 @@ h1{
 }
 
 .response{
-  margin-top: 16px;
   display: block;
-  padding: 16px 0;
 }

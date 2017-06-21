@@ -3,11 +3,10 @@
 <head>
   <title>Request framework</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./highlight.js/styles/default.css">
 </head>
 
 <body>
-  <script src="./bundle.js"></script>
-
   <header>
     Request framework
   </header>
@@ -24,8 +23,8 @@
         GET
       </div>
       <div
-        class = url>
-        http://google.cat
+        class = url
+        id = request-url>
       </div>
       
       <select
@@ -33,32 +32,28 @@
         class = format>
         <option value = json>JSON</option>
         <option value = xml>XML</option>
+        <option value = error>error</option>
       </select>
     </div>
 
     <pre
       class = "response response--detail">
-      HTTP 200 OK
-      Vary:
-      Allow:
-      Content-type
+      <code
+        id = response-detail>
+      </code>
     </pre>
 
     <pre
       class = "response response--content">
-      <code>
-        [
-          {
-              "id": 1,
-              "name": "MockAdvertiser",
-              "external_id": "1",
-              "impressions": 52721284,
-              "clicks": 93149
-          }
-        ]
+      <code
+        id = response-content>
       </code>
     </pre>
   </section>
+
+
+  
+  <script src="./bundle.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,4 @@
-class Test{
-  constructor(){
-    alert('this is a test');
-  }
-}
+import { RequestClient } from './request-client';
 
-new Test();
+
+new RequestClient('./response');

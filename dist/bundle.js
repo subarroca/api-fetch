@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,15 +73,131 @@
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RequestClient = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _httpRequest = __webpack_require__(1);
+
+var _highlight = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"highlight.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Test = function Test() {
-  _classCallCheck(this, Test);
+var RequestClient = exports.RequestClient = function () {
+  function RequestClient() {
+    var _this = this;
 
-  alert('this is a test');
-};
+    _classCallCheck(this, RequestClient);
 
-new Test();
+    this.baseUrl = '../data/response';
+    this.format = 'json';
+
+    this.formatSelector = document.getElementsByName('format')[0];
+    this.responseDetail = document.getElementById('response-detail');
+    this.responseContent = document.getElementById('response-content');
+    this.requestUrl = document.getElementById('request-url');
+
+    this.formatSelector.addEventListener('change', function (event) {
+      return _this.onFormatChange(event.target.value);
+    });
+
+    this.onFormatChange('json');
+  }
+
+  _createClass(RequestClient, [{
+    key: 'getUrl',
+    value: function getUrl(format) {
+      return this.baseUrl + '.' + format;
+    }
+  }, {
+    key: 'onFormatChange',
+    value: function onFormatChange(format) {
+      this.format = format;
+      this.loadUrl(this.getUrl(this.format));
+    }
+  }, {
+    key: 'loadUrl',
+    value: function loadUrl(url) {
+      var _this2 = this;
+
+      this.requestUrl.innerHTML = url;
+      // this.responseContent.innerHTML='';
+      // this.responseDetail.innerHTML='loading';
+
+      _httpRequest.HttpRequest.get(url).then(function (response) {
+        return _this2.showResponse(response);
+      }, function (error) {
+        return console.error(error);
+      });
+    }
+  }, {
+    key: 'showResponse',
+    value: function showResponse(response) {
+      console.log((0, _highlight.highlightAuto)('<div>hola</div>'));
+    }
+  }]);
+
+  return RequestClient;
+}();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var HttpRequest = exports.HttpRequest = function () {
+  function HttpRequest() {
+    _classCallCheck(this, HttpRequest);
+  }
+
+  _createClass(HttpRequest, null, [{
+    key: 'get',
+    value: function get(url) {
+      return HttpRequest.loadUrl(url, 'GET');
+    }
+  }, {
+    key: 'loadUrl',
+    value: function loadUrl(url, method) {
+      return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.addEventListener('load', function () {
+          return resolve(req);
+        });
+        req.addEventListener('error', function () {
+          return reject(req);
+        });
+        req.open(method, url);
+        req.send();
+      });
+    }
+  }]);
+
+  return HttpRequest;
+}();
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _requestClient = __webpack_require__(0);
+
+new _requestClient.RequestClient();
 
 /***/ })
 /******/ ]);
